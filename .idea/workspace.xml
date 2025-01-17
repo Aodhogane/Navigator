@@ -9,9 +9,12 @@
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NavigatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NavigatorImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Route.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/structura/HashSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structura/HashSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/structura/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structura/LinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/structura/MyList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structura/MyList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/structura/structurImpl/MyArrayListIml.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structura/structurImpl/MyArrayListIml.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/structura/structurImpl/MyHashSetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structura/structurImpl/MyHashSetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/structura/structurImpl/MyIteratorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structura/structurImpl/MyIteratorImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/structura/structurImpl/MyLinkedListImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structura/structurImpl/MyLinkedListImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>

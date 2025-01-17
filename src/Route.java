@@ -1,7 +1,6 @@
 import structura.MyList;
+import structura.structurImpl.MyArrayListIml;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Objects;
 
 public class Route {
@@ -9,14 +8,14 @@ public class Route {
     private double distance;
     private int popularity;
     private boolean  isFavorite;
-    private MyList<String> point;
+    private MyArrayListIml<String> point;
 
-    public Route(MyList<String> point, boolean isFavorite, int popularity, double distance, String id) {
-        this.point = point;
-        this.isFavorite = isFavorite;
-        this.popularity = popularity;
-        this.distance = distance;
+    public Route(String id, double distance, int popularity, boolean isFavorite, MyArrayListIml<String> point) {
         this.id = id;
+        this.distance = distance;
+        this.popularity = popularity;
+        this.isFavorite = isFavorite;
+        this.point = point;
     }
 
     public void increasePopularity() {
@@ -55,18 +54,16 @@ public class Route {
         isFavorite = favorite;
     }
 
-    public MyList<String> getPoint() {
+    public MyArrayListIml<String> getPoint() {
         return point;
     }
 
-    public void setPoint(MyList<String> point) {
+    public void setPoint(MyArrayListIml<String> point) {
         this.point = point;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
         Route route = (Route) o;
         return Double.compare(route.distance, distance) == 0 &&
                 popularity == route.popularity &&

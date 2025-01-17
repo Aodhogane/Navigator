@@ -1,11 +1,11 @@
 package structura.structurImpl;
 
-import structura.MyIterator;
 import structura.MyList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Objects;
 
-public class MyArrayListIml<T> implements MyList<T> {
+public class MyArrayListIml<T> implements MyList<T>, Iterable<T> {
 
     private Object[] elements;
     private int size = 0;
@@ -18,7 +18,7 @@ public class MyArrayListIml<T> implements MyList<T> {
 
     @Override
     public void add(T value) {
-        if (size == elements.length){
+        if (size == elements.length) {
             elements = Arrays.copyOf(elements, elements.length * 2);
         }
         elements[size++] = value;
@@ -26,7 +26,10 @@ public class MyArrayListIml<T> implements MyList<T> {
 
     @Override
     public T get(int index) {
-       return (T) elements[index];
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        return (T) elements[index];
     }
 
     @Override
@@ -44,17 +47,18 @@ public class MyArrayListIml<T> implements MyList<T> {
 
     @Override
     public void sort(T value) {
-        Arrays.sort((T []) elements, 0, size, (a, b) ->{
-            if(Objects.equals(a, value)){
-                return -1;
-            }
-            if (Objects.equals(b, value)){
-                return 1;
-            }
-            return 0;
-        });
-    }
+        for (int i =0; i < size - 1; i++){
+            for (int j = 0; j < size - 1; i++){
+                T first = (T) elements[j];
+                T second = (T) elements[j + 1];
+                if (((Comparable<T>) first).compareTo(second) > 0) {
 
+                    elements[j] = second;
+                    elements[j + 1] = first;
+                }
+            }
+        }
+    }
 
     @Override
     public int size() {
@@ -70,4 +74,10 @@ public class MyArrayListIml<T> implements MyList<T> {
         }
         return false;
     }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new MyIteratorImpl<>(this, t -> true);
+    }
 }
+

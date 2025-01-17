@@ -6,5 +6,4 @@ public interface LinkedList<T>  {
     void remove(T value);
     int size();
     boolean contains(T value);
-    MyIterator<T> iterator();
 }

@@ -1,5 +1,7 @@
 package structura;
 
+import java.util.Iterator;
+
 public interface MyList<T> {
     void add(T value);
     T get(int index);

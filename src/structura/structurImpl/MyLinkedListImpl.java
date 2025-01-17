@@ -81,9 +81,4 @@ public class MyLinkedListImpl<T> implements LinkedList<T> {
         }
         return false;
     }
-
-    @Override
-    public MyIterator<T> iterator() {
-        return new MyIteratorImpl<>(this, t -> true);
-    }
 }

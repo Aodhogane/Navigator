@@ -4,73 +4,77 @@ import structura.structurImpl.MyArrayListIml;
 
 public class Main {
     public static void main(String[] args) {
+        // Создаем экземпляр Navigator
         NavigatorImpl navigator = new NavigatorImpl();
 
-        // Создание маршрутов
-        MyArrayListIml<String> points1 = new MyArrayListIml<>();
-        points1.add("A");
-        points1.add("B");
-        points1.add("C");
-        Route route1 = new Route(points1, true, 10, 25.5, "1");
+        MyArrayListIml<String> point1 = new MyArrayListIml<>();
+        point1.add("Москва");
+        point1.add("Санкт-Петербург");
+        point1.add("Надым");
+        Route route1 = new Route("1", 10.2, 10, false, point1);
 
-        MyArrayListIml<String> points2 = new MyArrayListIml<>();
-        points2.add("D");
-        points2.add("E");
-        points2.add("F");
-        Route route2 = new Route(points2, false, 5, 15.3, "2");
+        MyArrayListIml<String> point2 = new MyArrayListIml<>();
+        point2.add("Елец");
+        point2.add("Варшава");
+        Route route2 = new Route("2", 10.2, 10, true, point2);
 
-        MyArrayListIml<String> points3 = new MyArrayListIml<>();
-        points3.add("A");
-        points3.add("G");
-        points3.add("H");
-        Route route3 = new Route(points3, false, 15, 42.1, "3");
+        MyArrayListIml<String> point3 = new MyArrayListIml<>();
+        point3.add("Магнитогорск");
+        point3.add("Сочи");
+        Route route3 = new Route("3", 10.2, 10, false, point3);
 
-        MyArrayListIml<String> points4 = new MyArrayListIml<>();
-        points4.add("X");
-        points4.add("Y");
-        points4.add("Z");
-        Route route4 = new Route(points4, true, 2, 45.2, "4");
+        MyArrayListIml<String> point4 = new MyArrayListIml<>();
+        point4.add("Улан-Удэ");
+        point4.add("Париж");
+        Route route4 = new Route("4", 10.2, 10, true, point4);
 
-        // Добавление маршрутов в навигатор
+        // Добавляем маршруты в Navigator
         navigator.addRoute(route1);
         navigator.addRoute(route2);
         navigator.addRoute(route3);
         navigator.addRoute(route4);
 
-        // Количество маршрутов
-        System.out.println("Общее количество маршрутов: " + navigator.size());
+        // Выводим размер коллекции маршрутов
+        System.out.println("Общее количество маршрутов: " + navigator.size() + "\n");
 
         // Проверка наличия маршрута
-        System.out.println("Содержит маршрут 1: " + navigator.contains(route1));
-
-        // Удаление маршрута
-        navigator.removeRoute("2");
-        System.out.println("Количество маршрутов после удаления: " + navigator.size());
+        System.out.println("Содержит ли маршрут 2: " + navigator.contains(route2) + "\n");
 
         // Получение маршрута по ID
-        Route retrievedRoute = navigator.getRoute("3");
-        System.out.println("Маршрут с ID 3: " + retrievedRoute);
-
-        // Увеличение популярности маршрута
-        navigator.chooseRoute("3");
-        System.out.println("Популярность маршрута 3 после выбора: " + retrievedRoute.getPopularity());
-
-        // Поиск маршрутов от A до C
-        System.out.println("Маршруты от A до C:");
-        for (Route route : navigator.searchRoutes("A", "C")) {
-            System.out.println(route);
+        Route foundRoute = navigator.getRoute("2");
+        if (foundRoute != null) {
+            System.out.println("Найден маршрут с ID 2: " + foundRoute + "\n");
+        } else {
+            System.out.println("Маршрут с ID 2 не найден." + "\n");
         }
 
-        // Избранные маршруты, содержащие точку G
-        System.out.println("Избранные маршруты с точкой G:");
-        for (Route route : navigator.getFavoriteRoutes("G")) {
-            System.out.println(route);
+        // Выбор маршрута (увеличиваем популярность)
+        navigator.chooseRoute("2");
+        System.out.println("Обновленная популярность маршрута 2: " + route2.getPopularity() + "\n");
+
+        // Поиск маршрутов по точкам старта и конца
+        Iterable<Route> searchResults = navigator.searchRoutes("Москва", "Магнитогорск");
+        System.out.println("Маршрута такого нет: " + "\n");
+        for (Route r : searchResults) {
+            System.out.println(r);
         }
 
-        // Топ-3 маршрута по популярности
-        System.out.println("Топ-3 маршрута по популярности:");
-        for (Route route : navigator.getTop3Routes()) {
-            System.out.println(route);
+        // Получение избранных маршрутов для определенной точки назначения
+        Iterable<Route> favoriteRoutes = navigator.getFavoriteRoutes("Елец");
+        System.out.println("Избранные маршруты. " + "\n");
+        for (Route r : favoriteRoutes) {
+            System.out.println(r);
         }
+
+        // Получение 3 самых популярных маршрутов
+        Iterable<Route> topRoutes = navigator.getTop3Routes();
+        System.out.println("Топ 3 маршрутов: " + "\n");
+        for (Route r : topRoutes) {
+            System.out.println(r);
+        }
+
+        // Удаление маршрута
+        navigator.removeRoute("4");
+        System.out.println("Общее количество маршрутов после удаления: " + navigator.size() + "\n");
     }
 }

@@ -6,8 +6,5 @@ public interface HashSet<T> {
     void remove(T value);
     int size();
     int capacity();
-
     T get(int index);
-
-//    MyIterator<T> iterator();
 }

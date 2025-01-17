@@ -68,8 +68,8 @@ public class MyHashSetImpl<T> implements HashSet<T> {
     public T get(int index) {
         int currentIndex = 0;
         for (MyLinkedListImpl<T> bucket : buckets) {
-            for (MyIterator<T> iterator = bucket.iterator(); iterator.hasNext(); ) {
-                T element = iterator.next();
+            for (int i = 0; i < bucket.size(); i++) {
+                T element = bucket.get(i);
                 if (currentIndex == index) {
                     return element;
                 }

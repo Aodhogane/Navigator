@@ -1,8 +1,10 @@
+
+import structura.MyList;
 import structura.structurImpl.MyArrayListIml;
 import structura.structurImpl.MyHashSetImpl;
-import structura.structurImpl.MyIteratorImpl;
 
-import java.util.*;
+import java.util.Comparator;
+
 
 public class NavigatorImpl implements Navigator {
 
@@ -19,16 +21,16 @@ public class NavigatorImpl implements Navigator {
     }
 
     @Override
-    public void removeRoute(String routeId) {
-        MyIteratorImpl<Route> iterator = new MyIteratorImpl<>(routes, t -> true);
-        while (iterator.hasNext()) {
-            Route route = iterator.next();
-            if (route.getId().equals(routeId)) {
-                routes.remove(route);
+    public void removeRoute(String route) {
+        for (int i = 0; i < routes.size(); i++){
+            Route route1 = routes.get(i);
+            if (route1 != null && route1.getId().equals(route)){
+                routes.remove(route1);
                 return;
             }
         }
     }
+
 
     @Override
     public int size() {
@@ -37,10 +39,9 @@ public class NavigatorImpl implements Navigator {
 
     @Override
     public Route getRoute(String routeId) {
-        MyIteratorImpl<Route> iterator = new MyIteratorImpl<>(routes, t -> true);
-        while (iterator.hasNext()) {
-            Route route = iterator.next();
-            if (route.getId().equals(routeId)) {
+        for (int i =0; i < routes.size(); i++){
+            Route route = routes.get(i);
+            if (route != null && route.getId().equals(routeId)){
                 return route;
             }
         }
@@ -49,10 +50,9 @@ public class NavigatorImpl implements Navigator {
 
     @Override
     public void chooseRoute(String routeId) {
-        MyIteratorImpl<Route> iterator = new MyIteratorImpl<>(routes, t -> true);
-        while (iterator.hasNext()) {
-            Route route = iterator.next();
-            if (route.getId().equals(routeId)) {
+        for (int i = 0; i < routes.size(); i++){
+            Route route = routes.get(i);
+            if (route != null && route.getId().equals(routeId)){
                 route.increasePopularity();
                 return;
             }
@@ -62,10 +62,9 @@ public class NavigatorImpl implements Navigator {
     @Override
     public Iterable<Route> searchRoutes(String startPoint, String endPoint) {
         MyArrayListIml<Route> result = new MyArrayListIml<>();
-        MyIteratorImpl<Route> iterator = new MyIteratorImpl<>(routes, t -> true);
-        while (iterator.hasNext()) {
-            Route route = iterator.next();
-            if (route.getPoint().equals(startPoint) && route.getPoint().equals(endPoint)) {
+        for (int i = 0; i < routes.size(); i++) {
+            Route route = routes.get(i);
+            if (route != null && route.getPoint().contains(startPoint) && route.getPoint().contains(endPoint)) {
                 result.add(route);
             }
         }
@@ -74,11 +73,31 @@ public class NavigatorImpl implements Navigator {
 
     @Override
     public Iterable<Route> getFavoriteRoutes(String destinationPoint) {
-
+        MyArrayListIml<Route> result = new MyArrayListIml<>();
+        for (int i = 0; i < routes.size(); i++) {
+            Route route = routes.get(i);
+            if (route != null && route.getPoint().contains(destinationPoint) && route.isFavorite()) {
+                result.add(route);
+            }
+        }
+        return result;
     }
 
     @Override
     public Iterable<Route> getTop3Routes() {
+        MyList<Route> routeList = new MyArrayListIml<>();
+        for (int i = 0; i < routes.size(); i++) {
+            routeList.add(routes.get(i));
+        }
 
+        routeList.sort(Comparator.comparingInt(Route::getPopularity).reversed());
+
+        MyArrayListIml<Route> topRoutes = new MyArrayListIml<>();
+        for (int i = 0; i < Math.min(3, routeList.size()); i++) {
+            topRoutes.add(routeList.get(i));
+        }
+
+        return topRoutes;
     }
 }
+
