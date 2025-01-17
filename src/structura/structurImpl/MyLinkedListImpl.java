@@ -1,13 +1,13 @@
 package structura.structurImpl;
 
-import structura.MyList;
+import structura.LinkedList;
+import structura.MyIterator;
 
 import java.util.Objects;
 
-public class MyLinkedListImpl<T> implements MyList<T> {
+public class MyLinkedListImpl<T> implements LinkedList<T> {
 
-    private Node<T> head;
-    private Node<T> tail;
+    private Node<T> head, tail;
     private int size;
 
     private static class Node<T>{
@@ -52,12 +52,12 @@ public class MyLinkedListImpl<T> implements MyList<T> {
                 if (current.prev != null) {
                     current.prev.next = current.next;
                 } else {
-                    head = current.next; // Удаляем первый элемент
+                    head = current.next;
                 }
                 if (current.next != null) {
                     current.next.prev = current.prev;
                 } else {
-                    tail = current.prev; // Удаляем последний элемент
+                    tail = current.prev;
                 }
                 size--;
                 return;
@@ -80,5 +80,10 @@ public class MyLinkedListImpl<T> implements MyList<T> {
             current = current.next;
         }
         return false;
+    }
+
+    @Override
+    public MyIterator<T> iterator() {
+        return new MyIteratorImpl<>(this, t -> true);
     }
 }

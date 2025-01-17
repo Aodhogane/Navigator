@@ -1,6 +1,6 @@
 package structura;
 
-public interface Iterator<T> {
+public interface MyIterator<T> {
     boolean hasNext();
     T next();
 }

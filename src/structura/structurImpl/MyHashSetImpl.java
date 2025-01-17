@@ -1,10 +1,10 @@
 package structura.structurImpl;
 
 import structura.HashSet;
-import structura.Iterator;
-import structura.MyList;
+import structura.MyIterator;
 
-public class MyHashSetImpl<T> implements MyList<T>, HashSet<T> {
+public class MyHashSetImpl<T> implements HashSet<T> {
+
     private static final int FIXED_CAPACITY = 16;
     private MyLinkedListImpl<T>[] buckets;
     private int capacity;
@@ -23,7 +23,6 @@ public class MyHashSetImpl<T> implements MyList<T>, HashSet<T> {
         this.count = 0;
     }
 
-
     private int hashCode(T key) {
         return (key == null) ? 0 : Math.abs(key.hashCode() % capacity);
     }
@@ -32,27 +31,10 @@ public class MyHashSetImpl<T> implements MyList<T>, HashSet<T> {
     public void add(T value) {
         int index = hashCode(value);
         MyLinkedListImpl<T> bucket = buckets[index];
-
         if (!bucket.contains(value)) {
             bucket.add(value);
             count++;
         }
-    }
-
-    @Override
-    public T get(int index) {
-        int currentIndex = 0;
-        for (MyLinkedListImpl<T> bucket : buckets) {
-            Iterator<T> iterator = new MyIteratorImpl<>(bucket, t -> true);
-            while (iterator.hasNext()) {
-                if (currentIndex == index) {
-                    return iterator.next();
-                }
-                currentIndex++;
-                iterator.next();
-            }
-        }
-        throw new IndexOutOfBoundsException("Индех: " + index + ", Размер: " + count);
     }
 
     @Override
@@ -66,7 +48,6 @@ public class MyHashSetImpl<T> implements MyList<T>, HashSet<T> {
     public void remove(T value) {
         int index = hashCode(value);
         MyLinkedListImpl<T> bucket = buckets[index];
-
         if (bucket.contains(value)) {
             bucket.remove(value);
             count--;
@@ -83,19 +64,18 @@ public class MyHashSetImpl<T> implements MyList<T>, HashSet<T> {
         return capacity;
     }
 
-    public MyArrayListIml<T> toList() {
-        MyArrayListIml<T> list = new MyArrayListIml<>();
+    @Override
+    public T get(int index) {
+        int currentIndex = 0;
         for (MyLinkedListImpl<T> bucket : buckets) {
-            Iterator<T> iterator = new MyIteratorImpl<>(bucket, t -> true);
-            while (iterator.hasNext()){
-                list.add(iterator.next());
+            for (MyIterator<T> iterator = bucket.iterator(); iterator.hasNext(); ) {
+                T element = iterator.next();
+                if (currentIndex == index) {
+                    return element;
+                }
+                currentIndex++;
             }
         }
-        return list;
-    }
-
-    @Override
-    public Iterator<T> iterator() {
-        return new MyIteratorImpl<>(toList(), t-> true);
+        throw new IllegalStateException("Element at index " + index + " not found.");
     }
 }

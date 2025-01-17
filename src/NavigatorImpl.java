@@ -1,11 +1,12 @@
+import structura.structurImpl.MyArrayListIml;
+import structura.structurImpl.MyHashSetImpl;
 import structura.structurImpl.MyIteratorImpl;
 
 import java.util.*;
 
 public class NavigatorImpl implements Navigator {
 
-    private final HashSet<Route> routes = new HashSet<>();
-
+    private final MyHashSetImpl<Route> routes = new MyHashSetImpl<>();
 
     @Override
     public void addRoute(Route route) {
@@ -19,7 +20,14 @@ public class NavigatorImpl implements Navigator {
 
     @Override
     public void removeRoute(String routeId) {
-        MyIteratorImpl<Route> iterator = new MyIteratorImpl<>(routesr, t->true)
+        MyIteratorImpl<Route> iterator = new MyIteratorImpl<>(routes, t -> true);
+        while (iterator.hasNext()) {
+            Route route = iterator.next();
+            if (route.getId().equals(routeId)) {
+                routes.remove(route);
+                return;
+            }
+        }
     }
 
     @Override
@@ -29,8 +37,10 @@ public class NavigatorImpl implements Navigator {
 
     @Override
     public Route getRoute(String routeId) {
-        for (Route route : routes){
-            if (route.getId().equals(routeId)){
+        MyIteratorImpl<Route> iterator = new MyIteratorImpl<>(routes, t -> true);
+        while (iterator.hasNext()) {
+            Route route = iterator.next();
+            if (route.getId().equals(routeId)) {
                 return route;
             }
         }
@@ -39,8 +49,10 @@ public class NavigatorImpl implements Navigator {
 
     @Override
     public void chooseRoute(String routeId) {
-        for (Route route : routes){
-            if (route.getId().equals(routeId)){
+        MyIteratorImpl<Route> iterator = new MyIteratorImpl<>(routes, t -> true);
+        while (iterator.hasNext()) {
+            Route route = iterator.next();
+            if (route.getId().equals(routeId)) {
                 route.increasePopularity();
                 return;
             }
@@ -49,16 +61,24 @@ public class NavigatorImpl implements Navigator {
 
     @Override
     public Iterable<Route> searchRoutes(String startPoint, String endPoint) {
-        return null;
+        MyArrayListIml<Route> result = new MyArrayListIml<>();
+        MyIteratorImpl<Route> iterator = new MyIteratorImpl<>(routes, t -> true);
+        while (iterator.hasNext()) {
+            Route route = iterator.next();
+            if (route.getPoint().equals(startPoint) && route.getPoint().equals(endPoint)) {
+                result.add(route);
+            }
+        }
+        return result;
     }
 
     @Override
     public Iterable<Route> getFavoriteRoutes(String destinationPoint) {
-        return null;
+
     }
 
     @Override
     public Iterable<Route> getTop3Routes() {
-        return null;
+
     }
 }

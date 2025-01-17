@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2956ba1f-6dec-4d35-8ffc-0e1bf6ab74ed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Navigator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NavigatorImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Route.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/structura/MyList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NavigatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NavigatorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Route.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/structura/MyList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structura/MyList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/structura/structurImpl/MyArrayListIml.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structura/structurImpl/MyArrayListIml.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/structura/structurImpl/MyHashSetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structura/structurImpl/MyHashSetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/structura/structurImpl/MyLinkedListImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structura/structurImpl/MyLinkedListImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

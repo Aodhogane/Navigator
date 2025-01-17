@@ -1,6 +1,6 @@
 package structura.structurImpl;
 
-import structura.Iterator;
+import structura.MyIterator;
 import structura.MyList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -43,11 +43,31 @@ public class MyArrayListIml<T> implements MyList<T> {
     }
 
     @Override
+    public void sort(T value) {
+        Arrays.sort((T []) elements, 0, size, (a, b) ->{
+            if(Objects.equals(a, value)){
+                return -1;
+            }
+            if (Objects.equals(b, value)){
+                return 1;
+            }
+            return 0;
+        });
+    }
+
+
+    @Override
     public int size() {
         return size;
     }
 
-    public Iterator<T> iterator() {
-        return new MyIteratorImpl<>(this, t-> true);
+    @Override
+    public boolean contains(T value) {
+        for (int i = 0; i < size; i++) {
+            if (Objects.equals(elements[i], value)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

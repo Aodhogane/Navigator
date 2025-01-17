@@ -1,18 +1,20 @@
 package structura.structurImpl;
 
-import structura.Iterator;
+import structura.HashSet;
+import structura.LinkedList;
+import structura.MyIterator;
 import structura.MyList;
 
 import java.util.NoSuchElementException;
 import java.util.function.Predicate;
 
-public class MyIteratorImpl<T> implements Iterator<T> {
+public class MyIteratorImpl<T> implements MyIterator<T> {
 
-    private MyList<T> list;
+    private LinkedList<T> list;
     private final Predicate<T> filter;
     private int currentIndex;
 
-    public MyIteratorImpl(MyList<T> list, Predicate<T> filter) {
+    public MyIteratorImpl(LinkedList<T> list, Predicate<T> filter) {
         this.list = list;
         this.filter = filter;
         this.currentIndex = 0;

@@ -1,3 +1,5 @@
+import structura.MyList;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -7,9 +9,9 @@ public class Route {
     private double distance;
     private int popularity;
     private boolean  isFavorite;
-    private List<String> point;
+    private MyList<String> point;
 
-    public Route(List<String> point, boolean isFavorite, int popularity, double distance, String id) {
+    public Route(MyList<String> point, boolean isFavorite, int popularity, double distance, String id) {
         this.point = point;
         this.isFavorite = isFavorite;
         this.popularity = popularity;
@@ -53,25 +55,39 @@ public class Route {
         isFavorite = favorite;
     }
 
-    public List<String> getPoint() {
+    public MyList<String> getPoint() {
         return point;
     }
 
-    public void setPoint(List<String> point) {
+    public void setPoint(MyList<String> point) {
         this.point = point;
     }
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Route route = (Route) o;
-
-        return distance == route.distance
-                && point.getFirst() == route.point.getFirst()
-                && point.getLast() == route.point.getLast();
+        return Double.compare(route.distance, distance) == 0 &&
+                popularity == route.popularity &&
+                isFavorite == route.isFavorite &&
+                id.equals(route.id) &&
+                point.equals(route.point);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, distance, popularity, isFavorite, point);
+    }
+
+    @Override
+    public String toString() {
+        return "Route{" +
+                "id='" + id + '\'' +
+                ", distance=" + distance +
+                ", popularity=" + popularity +
+                ", isFavorite=" + isFavorite +
+                ", point=" + point +
+                '}';
     }
 }

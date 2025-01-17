@@ -5,8 +5,9 @@ public interface HashSet<T> {
     boolean contains(T value);
     void remove(T value);
     int size();
-
     int capacity();
 
-    Iterator<T> iterator();
+    T get(int index);
+
+//    MyIterator<T> iterator();
 }
