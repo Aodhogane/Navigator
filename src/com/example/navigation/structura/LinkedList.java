@@ -1,4 +1,4 @@
-package structura;
+package com.example.navigation.structura;
 
 public interface LinkedList<T>  {
     void add(T value);

@@ -1,3 +1,5 @@
+package com.example.navigation;
+
 public interface Navigator {
 
     void addRoute(Route route);

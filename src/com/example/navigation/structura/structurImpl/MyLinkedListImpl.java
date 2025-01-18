@@ -1,7 +1,6 @@
-package structura.structurImpl;
+package com.example.navigation.structura.structurImpl;
 
-import structura.LinkedList;
-import structura.MyIterator;
+import com.example.navigation.structura.LinkedList;
 
 import java.util.Objects;
 

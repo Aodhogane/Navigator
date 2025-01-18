@@ -1,4 +1,4 @@
-package structura;
+package com.example.navigation.structura;
 
 public interface HashSet<T> {
     void add(T value);

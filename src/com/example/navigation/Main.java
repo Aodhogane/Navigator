@@ -1,4 +1,6 @@
-import structura.structurImpl.MyArrayListIml;
+package com.example.navigation;
+
+import com.example.navigation.structura.structurImpl.MyArrayListIml;
 
 public class Main {
     public static void main(String[] args) {
@@ -67,11 +69,13 @@ public class Main {
         System.out.println("\n");
 
         // Получение 3 самых популярных маршрутов
-//        Iterable<Route> topRoutes = navigator.getTop3Routes();
-//        System.out.println("Топ 3 маршрутов: " + "\n");
-//        for (Route r : topRoutes) {
-//            System.out.println(r);
-//        }
+        Iterable<Route> topRoutes = navigator.getTop3Routes();
+        System.out.println("Топ 3 маршрутов: ");
+        for (Route r : topRoutes) {
+            System.out.println(r);
+        }
+        System.out.println("\n");
+
 
         // Удаление маршрута
         navigator.removeRoute("4");

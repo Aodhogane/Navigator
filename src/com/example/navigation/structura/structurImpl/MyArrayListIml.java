@@ -1,7 +1,8 @@
-package structura.structurImpl;
+package com.example.navigation.structura.structurImpl;
 
-import structura.MyList;
+import com.example.navigation.structura.MyList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Objects;
 
@@ -9,7 +10,6 @@ public class MyArrayListIml<T> implements MyList<T>, Iterable<T> {
 
     private Object[] elements;
     private int size = 0;
-
     private static final int DEFAULT_CAPACITY = 16;
 
     public MyArrayListIml() {
@@ -46,18 +46,19 @@ public class MyArrayListIml<T> implements MyList<T>, Iterable<T> {
     }
 
     @Override
-    public void sort(T value) {
-        for (int i =0; i < size - 1; i++){
-            for (int j = 0; j < size - 1; i++){
-                T first = (T) elements[j];
-                T second = (T) elements[j + 1];
-                if (((Comparable<T>) first).compareTo(second) > 0) {
+    public void sort(Comparator<T> comparator) {
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = 0; j < size - 1 - i; j++) {
+                T current = (T) elements[j];
+                T next = (T) elements[j + 1];
+                if (comparator.compare(current, next) > 0) {
 
-                    elements[j] = second;
-                    elements[j + 1] = first;
+                    elements[j] = next;
+                    elements[j + 1] = current;
                 }
             }
         }
+
     }
 
     @Override

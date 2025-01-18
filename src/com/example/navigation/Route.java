@@ -1,6 +1,8 @@
-import structura.structurImpl.MyArrayListIml;
+package com.example.navigation;
 
+import com.example.navigation.structura.structurImpl.MyArrayListIml;
 import java.util.Objects;
+
 
 public class Route {
     private String id;
@@ -73,7 +75,7 @@ public class Route {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, distance, popularity, isFavorite, point);
+        return Objects.hash(id);
     }
 
     @Override

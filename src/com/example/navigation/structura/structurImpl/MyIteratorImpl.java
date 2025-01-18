@@ -1,4 +1,4 @@
-package structura.structurImpl;
+package com.example.navigation.structura.structurImpl;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 
 public class MyIteratorImpl<T> implements Iterator<T> {
 
-    private MyArrayListIml<T> list;
+    private final MyArrayListIml<T> list;
     private final Predicate<T> filter;
     private int currentIndex;
 
