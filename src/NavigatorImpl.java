@@ -1,10 +1,6 @@
-
 import structura.MyList;
 import structura.structurImpl.MyArrayListIml;
 import structura.structurImpl.MyHashSetImpl;
-
-import java.util.Comparator;
-
 
 public class NavigatorImpl implements Navigator {
 
@@ -30,7 +26,6 @@ public class NavigatorImpl implements Navigator {
             }
         }
     }
-
 
     @Override
     public int size() {
@@ -85,19 +80,20 @@ public class NavigatorImpl implements Navigator {
 
     @Override
     public Iterable<Route> getTop3Routes() {
-        MyList<Route> routeList = new MyArrayListIml<>();
-        for (int i = 0; i < routes.size(); i++) {
-            routeList.add(routes.get(i));
-        }
-
-        routeList.sort(Comparator.comparingInt(Route::getPopularity).reversed());
-
-        MyArrayListIml<Route> topRoutes = new MyArrayListIml<>();
-        for (int i = 0; i < Math.min(3, routeList.size()); i++) {
-            topRoutes.add(routeList.get(i));
-        }
-
-        return topRoutes;
+//        MyList<Route> routeList = new MyArrayListIml<>();
+//        for (int i = 0; i < routes.size(); i++) {
+//            routeList.add(routes.get(i));
+//        }
+//
+//        routeList.sort((route1, route2) -> Integer.compare(route2.getPopularity(), route1.getPopularity()));
+//
+//        MyArrayListIml<Route> topRoutes = new MyArrayListIml<>();
+//        for (int i = 0; i < Math.min(3, routeList.size()); i++) {
+//            topRoutes.add(routeList.get(i));
+//        }
+//
+//        return topRoutes;
+//    }
+        return null;
     }
 }
-

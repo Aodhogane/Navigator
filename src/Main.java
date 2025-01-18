@@ -1,7 +1,5 @@
 import structura.structurImpl.MyArrayListIml;
 
-import structura.structurImpl.MyArrayListIml;
-
 public class Main {
     public static void main(String[] args) {
         // Создаем экземпляр Navigator
@@ -26,7 +24,7 @@ public class Main {
         MyArrayListIml<String> point4 = new MyArrayListIml<>();
         point4.add("Улан-Удэ");
         point4.add("Париж");
-        Route route4 = new Route("4", 10.2, 10, true, point4);
+        Route route4 = new Route("4", 10.2, 10, false, point4);
 
         // Добавляем маршруты в Navigator
         navigator.addRoute(route1);
@@ -53,25 +51,27 @@ public class Main {
         System.out.println("Обновленная популярность маршрута 2: " + route2.getPopularity() + "\n");
 
         // Поиск маршрутов по точкам старта и конца
-        Iterable<Route> searchResults = navigator.searchRoutes("Москва", "Магнитогорск");
-        System.out.println("Маршрута такого нет: " + "\n");
+        System.out.println("Маршрут с Москвы до Надыма: ");
+        Iterable<Route> searchResults = navigator.searchRoutes("Москва", "Надым");
         for (Route r : searchResults) {
             System.out.println(r);
         }
+        System.out.println("\n");
 
         // Получение избранных маршрутов для определенной точки назначения
+        System.out.println("Избранные маршруты. ");
         Iterable<Route> favoriteRoutes = navigator.getFavoriteRoutes("Елец");
-        System.out.println("Избранные маршруты. " + "\n");
         for (Route r : favoriteRoutes) {
             System.out.println(r);
         }
+        System.out.println("\n");
 
         // Получение 3 самых популярных маршрутов
-        Iterable<Route> topRoutes = navigator.getTop3Routes();
-        System.out.println("Топ 3 маршрутов: " + "\n");
-        for (Route r : topRoutes) {
-            System.out.println(r);
-        }
+//        Iterable<Route> topRoutes = navigator.getTop3Routes();
+//        System.out.println("Топ 3 маршрутов: " + "\n");
+//        for (Route r : topRoutes) {
+//            System.out.println(r);
+//        }
 
         // Удаление маршрута
         navigator.removeRoute("4");

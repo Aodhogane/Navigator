@@ -1,4 +1,3 @@
-import structura.MyList;
 import structura.structurImpl.MyArrayListIml;
 
 import java.util.Objects;

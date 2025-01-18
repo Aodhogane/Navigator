@@ -79,5 +79,16 @@ public class MyArrayListIml<T> implements MyList<T>, Iterable<T> {
     public Iterator<T> iterator() {
         return new MyIteratorImpl<>(this, t -> true);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("[");
+        for (int i = 0; i < size; i++) {
+            sb.append(elements[i]);
+            if (i < size - 1) sb.append(", ");
+        }
+        sb.append("]");
+        return sb.toString();
+    }
 }
 
