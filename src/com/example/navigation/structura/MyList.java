@@ -9,4 +9,6 @@ public interface MyList<T> {
     void sort(Comparator<T> comparator);
     int size();
     boolean contains(T value);
+    T getStartPoint();
+    T getEndPoint();
 }

@@ -4,9 +4,9 @@ public interface Navigator {
 
     void addRoute(Route route);
 
-    boolean contains(Route route);
-
     void removeRoute(String route);
+
+    boolean contains(Route route);
 
     int size();
 

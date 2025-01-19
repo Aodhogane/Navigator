@@ -50,6 +50,8 @@ public class NavigatorImpl implements Navigator {
             Route route = routes.get(i);
             if (route != null && route.getId().equals(routeId)) {
                 route.increasePopularity();
+                routes.remove(route);
+                routes.add(route);
                 return;
             }
         }
@@ -66,10 +68,19 @@ public class NavigatorImpl implements Navigator {
         }
 
         result.sort((route1, route2) -> {
-            int distanceComparison = Integer.compare(route1.getPoint().size(), route2.getPoint().size());
-            if (distanceComparison != 0) {
-                return distanceComparison;
+            if (route1.isFavorite() && !route2.isFavorite()){
+                return -1;
             }
+
+            if (!route1.isFavorite() && route2.isFavorite()){
+                return 1;
+            }
+
+            int distant = Integer.compare(route1.getPoint().size(), route2.getPoint().size());
+            if (distant !=0){
+                return distant;
+            }
+
             return Integer.compare(route2.getPopularity(), route1.getPopularity());
         });
 
@@ -81,12 +92,20 @@ public class NavigatorImpl implements Navigator {
         MyArrayListIml<Route> result = new MyArrayListIml<>();
         for (int i = 0; i < routes.size(); i++) {
             Route route = routes.get(i);
-            if (route != null && route.getPoint().contains(destinationPoint) && route.isFavorite()) {
+            if (route != null
+                    && route.getPoint().contains(destinationPoint))
+            {
                 result.add(route);
             }
         }
 
-        result.sort((route1, route2) -> Boolean.compare(route2.isFavorite(), route1.isFavorite()));
+        result.sort((route1, route2) ->{
+            int distant = Integer.compare(route1.getPoint().size(), route2.getPoint().size());
+            if (distant != 0) {
+                return distant;
+            }
+            return Integer.compare(route2.getPopularity(), route1.getPopularity());
+        });
 
         return result;
     }
@@ -94,23 +113,36 @@ public class NavigatorImpl implements Navigator {
     @Override
     public Iterable<Route> getTop3Routes() {
         MyArrayListIml<Route> result = new MyArrayListIml<>();
-        for (int i = 0; i < routes.size(); i++) {
+        for (int i = 0; i < routes.size(); i++){
             result.add(routes.get(i));
         }
 
-        result.sort((route1, route2) -> {
-            int distanceComparison = Integer.compare(route1.getPoint().size(), route2.getPoint().size());
+        result.sort((route1, route2) ->{
+            if (route1.isFavorite() && !route2.isFavorite()) {
+                return -1;
+            }
+            if (!route1.isFavorite() && route2.isFavorite()) {
+                return 1;
+            }
+
+            int popularityComparison = Integer.compare(route2.getPopularity(), route1.getPopularity());
+            if (popularityComparison != 0) {
+                return popularityComparison;
+            }
+
+            int distanceComparison = Double.compare(route1.getDistance(), route2.getDistance());
             if (distanceComparison != 0) {
                 return distanceComparison;
             }
-            return Integer.compare(route2.getPopularity(), route1.getPopularity());
+
+            return Integer.compare(route1.getPoint().size(), route2.getPoint().size());
         });
 
-        MyArrayListIml<Route> topRoutes = new MyArrayListIml<>();
-        for (int i = 0; i < Math.min(3, result.size()); i++) {
-            topRoutes.add(result.get(i));
+        MyArrayListIml<Route> top3 = new MyArrayListIml<>();
+        for (int i = 0; i < Math.min(5, result.size()); i++) {
+            top3.add(result.get(i));
         }
 
-        return topRoutes;
+        return top3;
     }
 }

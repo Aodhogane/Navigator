@@ -2,6 +2,10 @@ package com.example.navigation.structura.structurImpl;
 
 import com.example.navigation.structura.HashSet;
 
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
+
 public class MyHashSetImpl<T> implements HashSet<T> {
 
     private static final int FIXED_CAPACITY = 16;

@@ -6,18 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="2956ba1f-6dec-4d35-8ffc-0e1bf6ab74ed" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Navigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/Navigator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NavigatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/NavigatorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/Route.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/structura/HashSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/structura/HashSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/structura/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/structura/LinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/structura/MyIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/structura/MyIterator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/structura/MyList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/structura/MyList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/structura/structurImpl/MyArrayListIml.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/structura/structurImpl/MyArrayListIml.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/structura/structurImpl/MyHashSetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/structura/structurImpl/MyHashSetImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/structura/structurImpl/MyIteratorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/structura/structurImpl/MyIteratorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/structura/structurImpl/MyLinkedListImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/structura/structurImpl/MyLinkedListImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/example/navigation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/example/navigation/Navigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/Navigator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/example/navigation/NavigatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/NavigatorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/example/navigation/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/Route.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/example/navigation/structura/MyList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/structura/MyList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/example/navigation/structura/structurImpl/MyArrayListIml.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/structura/structurImpl/MyArrayListIml.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/example/navigation/structura/structurImpl/MyHashSetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/navigation/structura/structurImpl/MyHashSetImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -65,17 +65,14 @@ public class Route {
 
     @Override
     public boolean equals(Object o) {
-        Route route = (Route) o;
-        return Double.compare(route.distance, distance) == 0 &&
-                popularity == route.popularity &&
-                isFavorite == route.isFavorite &&
-                id.equals(route.id) &&
-                point.equals(route.point);
-    }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+        Route route = (Route) o;
+
+        return distance == route.distance
+                && point.getStartPoint() == route.point.getStartPoint()
+                && point.getEndPoint() == route.point.getEndPoint();
     }
 
     @Override

@@ -91,5 +91,15 @@ public class MyArrayListIml<T> implements MyList<T>, Iterable<T> {
         sb.append("]");
         return sb.toString();
     }
+
+    @Override
+    public T getStartPoint(){
+        return size == 0 ? null : (T) elements[0];
+    }
+
+    @Override
+    public T getEndPoint(){
+        return size == 0 ? null : (T) elements[size -1];
+    }
 }
 
