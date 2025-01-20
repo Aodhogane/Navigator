@@ -3,6 +3,8 @@ package com.example.navigation;
 import com.example.navigation.structura.structurImpl.MyArrayListIml;
 import com.example.navigation.structura.structurImpl.MyHashSetImpl;
 
+import static com.example.navigation.callculator.calculatePoint;
+
 public class NavigatorImpl implements Navigator {
 
     private final MyHashSetImpl<Route> routes = new MyHashSetImpl<>();
@@ -18,10 +20,10 @@ public class NavigatorImpl implements Navigator {
     }
 
     @Override
-    public void removeRoute(String route) {
+    public void removeRoute(String routeID) {
         for (int i = 0; i < routes.size(); i++) {
             Route route1 = routes.get(i);
-            if (route1 != null && route1.getId().equals(route)) {
+            if (route1 != null && route1.getId().equals(routeID)) {
                 routes.remove(route1);
                 return;
             }
@@ -62,23 +64,27 @@ public class NavigatorImpl implements Navigator {
         MyArrayListIml<Route> result = new MyArrayListIml<>();
         for (int i = 0; i < routes.size(); i++) {
             Route route = routes.get(i);
-            if (route != null && route.getPoint().contains(startPoint) && route.getPoint().contains(endPoint)) {
+            if (route != null
+                    && route.getPoint().contains(startPoint)
+                    && endPoint.equals(route.getPoint().get(route.getPoint().size() - 1))) {
                 result.add(route);
             }
         }
 
         result.sort((route1, route2) -> {
-            if (route1.isFavorite() && !route2.isFavorite()){
+            if (route1.isFavorite() && !route2.isFavorite()) {
                 return -1;
             }
-
-            if (!route1.isFavorite() && route2.isFavorite()){
+            if (!route1.isFavorite() && route2.isFavorite()) {
                 return 1;
             }
 
-            int distant = Integer.compare(route1.getPoint().size(), route2.getPoint().size());
-            if (distant !=0){
-                return distant;
+            int distance1 = calculatePoint(route1.getPoint(), startPoint, endPoint);
+            int distance2 = calculatePoint(route2.getPoint(), startPoint, endPoint);
+
+            int distantComparison = Integer.compare(distance1, distance2);
+            if (distantComparison != 0) {
+                return distantComparison;
             }
 
             return Integer.compare(route2.getPopularity(), route1.getPopularity());
@@ -93,7 +99,8 @@ public class NavigatorImpl implements Navigator {
         for (int i = 0; i < routes.size(); i++) {
             Route route = routes.get(i);
             if (route != null
-                    && route.getPoint().contains(destinationPoint))
+                    && route.getPoint().contains(destinationPoint)
+                    && route.isFavorite())
             {
                 result.add(route);
             }
@@ -125,14 +132,14 @@ public class NavigatorImpl implements Navigator {
                 return 1;
             }
 
-            int popularityComparison = Integer.compare(route2.getPopularity(), route1.getPopularity());
-            if (popularityComparison != 0) {
-                return popularityComparison;
+            int popular = Integer.compare(route2.getPopularity(), route1.getPopularity());
+            if (popular != 0) {
+                return popular;
             }
 
-            int distanceComparison = Double.compare(route1.getDistance(), route2.getDistance());
-            if (distanceComparison != 0) {
-                return distanceComparison;
+            int distance = Double.compare(route1.getDistance(), route2.getDistance());
+            if (distance != 0) {
+                return distance;
             }
 
             return Integer.compare(route1.getPoint().size(), route2.getPoint().size());

@@ -70,10 +70,16 @@ public class Route {
 
         Route route = (Route) o;
 
-        return distance == route.distance
-                && point.getStartPoint() == route.point.getStartPoint()
-                && point.getEndPoint() == route.point.getEndPoint();
+        return Double.compare(distance, route.distance) == 0
+                && Objects.equals(point.getStartPoint(), route.point.getStartPoint())
+                && Objects.equals(point.getEndPoint(), route.point.getEndPoint());
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, distance, point.getStartPoint(), point.getEndPoint());
+    }
+
 
     @Override
     public String toString() {
